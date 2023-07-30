@@ -38,27 +38,27 @@ app.get("/api/:date?", function(req, res) {
     return res.json({
       unix: current.getTime(),
       utc: current.toUTCString(),
-    }); 
+    });
   }
-    
-  var date_string=req.params.date;
-  
+
+  var date_string = req.params.date;
+  //accepts date as a timestamp
   var unix = new Date(date_string);
-  
-  if(unix.toUTCString()==="Invalid Date"){
-    unix=new Date(date_string*1);
+
+  if (unix.toUTCString() === "Invalid Date") {
+    unix = new Date(date_string * 1);
   }
-  if(unix.toUTCString()==="Invalid Date"){
-    res.json({error:"Invalid Date"});
+  if (unix.toUTCString() === "Invalid Date") {
+    res.json({ error: "Invalid Date" });
     return;
   }
-  
-  res.json({ 
-    unix: unix.getTime(), 
-    utc: unix.toUTCString()  
+
+  res.json({
+    unix: unix.getTime(),
+    utc: unix.toUTCString()
   });
 });
 
-  
+
 
 
